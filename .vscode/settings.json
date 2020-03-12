@@ -18,7 +18,8 @@
         "utility": "c"
     },
     "[c]": {
-        "editor.formatOnSave": false
+        "editor.formatOnSave": false,
+        "editor.formatOnPaste": false
     },
     "files.trimTrailingWhitespace": false
 }
