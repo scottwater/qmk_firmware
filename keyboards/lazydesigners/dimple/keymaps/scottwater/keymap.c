@@ -19,15 +19,16 @@ enum custom_layers {
 	_QWERTY,
 	_LOWER,
 	_RAISE,
-	_ADJUST
+	_ADJUST,
+	_NAVIGATION,
 };
 
-// Act as Shift on hold and as CapsLock on tap
-#define SFT_CPS LSFT_T(KC_CAPS)
 // Left space on tap, LOWER on hold
 #define SPC_LOW LT(_LOWER, KC_SPC)
 // Left space on tap, UPPER on hold
 #define SPC_UPR LT(_RAISE, KC_SPC)
+
+#define TAB_NAV LT(_NAVIGATION, KC_TAB)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -35,19 +36,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,---------------------------------------------------------------.
  * |Esc | Q  | W  | E  | R  | T  | Y  | U  | I  | O  | P  |  Bspc  |
  * |---------------------------------------------------------------|
- * | Tab  | A  | S  | D  | F  | G  | H  | J  | K  | L  | '  |Enter |
+ * | Tab/NAV | A  | S  | D  | F  | G  | H  | J  | K  | L  | ' |Enter |
  * |---------------------------------------------------------------|
- * | Shift  | Z  | X  | C  | V  | B  | N  | M  | ,  | Up |    .    |
+ * | Shift  | Z  | X  | C  | V  | B  | N  | M  | ,  | . |    SHIFT    |
  * |---------------------------------------------------------------|
- *      |Ctrl|Alt |Gui | Spc/Lwr |   Spc/Rse   |Left|Down|Rght|
+ *      |Ctrl|Alt |Gui | Spc/Lwr |   Spc/Rse   |Alt|Control| / |
  *      `-----------------------------------------------------'
  */
 
 	[_QWERTY] = LAYOUT(
 		KC_GESC, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
-		KC_TAB,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_QUOT, KC_ENT,
-		SFT_CPS, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_UP,   KC_DOT,
-		KC_LCTL, KC_LALT, KC_LGUI, SPC_LOW,  SPC_UPR,  KC_LEFT, KC_DOWN, KC_RGHT
+		TAB_NAV,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_QUOT, KC_ENT,
+		KC_LSHIFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,   KC_RSHIFT,
+		KC_LCTL, KC_LALT, KC_LGUI, SPC_LOW,  SPC_UPR,  KC_RALT, KC_RCTRL, KC_SLSH
 	),
 
 /*
@@ -106,6 +107,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
 		RGB_VAD, RGB_TOG, RGB_VAI, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO
 	),
+
+	[_NAVIGATION] = LAYOUT(
+		KC_GESC, C(KC_1),    C(KC_2),    C(KC_3),    C(KC_4),    C(KC_5),    KC_Y,    KC_U,    A(G(KC_I)),    KC_O,    KC_P,    KC_BSPC,
+		TAB_NAV,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_LEFT,    KC_DOWN,    KC_UP,    KC_RGHT,    KC_QUOT, KC_ENT,
+		KC_LSHIFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    SGUI(KC_LEFT), SGUI(KC_RGHT),   KC_DOT,
+		KC_LCTL, KC_LALT, KC_LGUI, SPC_LOW,  SPC_UPR,  KC_LEFT, KC_DOWN, KC_RGHT
+	),
 };
 
 void led_set_user(uint8_t usb_led) {
@@ -130,6 +138,9 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 		case _ADJUST:
 			rgblight_sethsv_noeeprom(HSV_RED);
 			break;
+		case _NAVIGATION:
+			rgblight_sethsv_noeeprom(HSV_CORAL);
+			break;			
 		default:
 			rgblight_sethsv_noeeprom(HSV_WHITE);
 			break;
