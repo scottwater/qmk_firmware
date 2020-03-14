@@ -139,7 +139,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 			rgblight_sethsv_noeeprom(HSV_RED);
 			break;
 		case _NAVIGATION:
-			rgblight_sethsv_noeeprom(HSV_CORAL);
+			rgblight_sethsv_noeeprom(HSV_BLUE);
 			break;			
 		default:
 			rgblight_sethsv_noeeprom(HSV_WHITE);
