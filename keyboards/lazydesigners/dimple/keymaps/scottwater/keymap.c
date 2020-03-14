@@ -113,10 +113,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	),
 
 	[_NAVIGATION] = LAYOUT(
-		KC_GESC, C(KC_1),    C(KC_2),    C(KC_3),    C(KC_4),    C(KC_5),    KC_Y,    KC_U,    A(G(KC_I)),    KC_O,    KC_P,    KC_BSPC,
-		TAB_NAV,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_LEFT,    KC_DOWN,    KC_UP,    KC_RGHT,    KC_QUOT, KC_ENT,
-		KC_LSHIFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    SGUI(KC_LEFT), SGUI(KC_RGHT),   KC_DOT,
-		KC_LCTL, KC_LALT, KC_LGUI, SPC_LOW,  SPC_UPR,  KC_LEFT, KC_DOWN, KC_RGHT
+		KC_GESC, C(KC_1),    C(KC_2),    C(KC_3),    C(KC_4),    C(KC_5),    _______,    _______,    A(G(KC_I)),    _______,    _______,    _______,
+		TAB_NAV,  _______,    _______,    _______,    _______,    _______,    KC_LEFT,    KC_DOWN,    KC_UP,    KC_RGHT,    _______, _______,
+		_______, _______,    _______,    _______,    _______,    _______,    _______,    _______,    SGUI(KC_LEFT), SGUI(KC_RGHT),   _______,
+		_______, _______, _______, _______,  _______,  _______, _______, _______
 	),
 };
 
