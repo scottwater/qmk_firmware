@@ -132,19 +132,26 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 	// In the event both LOWER & RAISE on selected, activate ADJUST
 	// https://www.reddit.com/r/olkb/comments/4rn7gh/adjust_layer_raise_lower/
 	state = update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
+
+	// Dimple has Red and Green reversed. 
+	// 
 	switch (get_highest_layer(state)) {
 		case _LOWER:
-			rgblight_sethsv_noeeprom(HSV_GREEN);
+			// Green = 0, 128, 0
+			rgblight_setrgb(128, 0, 0);
 			break;
 		case _RAISE:
-			rgblight_sethsv_noeeprom(HSV_GOLD);
+			// Red and Green are the same (0), so stick with HSV
+			rgblight_sethsv_noeeprom(HSV_BLUE);
 			break;
 		case _ADJUST:
-			rgblight_sethsv_noeeprom(HSV_RED);
+			// Red = 255, 0, 0
+			rgblight_setrgb(0, 255, 0);
 			break;
 		case _NAVIGATION:
-			rgblight_sethsv_noeeprom(HSV_BLUE);
-			break;			
+			// Magenta = 255, 0, 255
+			rgblight_setrgb(0, 255, 255);
+			break;
 		default:
 			rgblight_sethsv_noeeprom(HSV_WHITE);
 			break;
