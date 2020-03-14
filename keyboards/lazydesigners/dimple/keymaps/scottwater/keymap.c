@@ -30,6 +30,10 @@ enum custom_layers {
 
 #define TAB_NAV LT(_NAVIGATION, KC_TAB)
 
+void keyboard_post_init_user(void) {
+    layer_state_set_user(_QWERTY);
+}
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /*
