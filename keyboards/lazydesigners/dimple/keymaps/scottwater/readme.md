@@ -1,11 +1,11 @@
-# The default keymap for Dimple
+# Scott's KeyMap for Dimple
 
 **Features**
 
-* Shift acts as CapsLock when tapped  
 * Left space: space on tap, Lower layer on hold  
 * Right space: space on tap, Raise layer on hold  
 * Both space: Adjust layer on hold  
+* Tab: tab on tap, Navigation layer on hold
 
 ## QWERTY (Normal) Layer
 ```
@@ -43,6 +43,19 @@
  |        | F7 | F8 | F9 |F10 |F11 |F12  |    |    |   |         |
  |---------------------------------------------------------------|
       |VolD|Mute|VolU|         |             |    |    |    |
+      `-----------------------------------------------------'
+```
+
+## Navigation Layer
+```
+ ,---------------------------------------------------------------.
+ |    |Spc 1 |Spc 2|Spc 3|Spc 4|Spc 5|    |    |WC|    |    |    |
+ |---------------------------------------------------------------|
+ |      |    |    |    |    |    | ← | down | up | → |    |      |
+ |---------------------------------------------------------------|
+ |        |    |    |    |    |    |     |    | SG L | SG R  |   |
+ |---------------------------------------------------------------|
+      |    -|     |    |         |             |Top|    |Bottom|
       `-----------------------------------------------------'
 ```
 
